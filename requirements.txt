@@ -1,0 +1,23 @@
+# --- Core ---
+numpy
+pandas
+tqdm
+pyarrow
+uniface
+
+# --- Computer Vision ---
+opencv-python
+
+# --- Face detection & embeddings ---
+uniface
+
+# --- Machine Learning ---
+scikit-learn
+
+# --- Plotting & visualisation ---
+matplotlib
+scipy
+
+# --- Image handling (HEIC support) ---
+Pillow
+pillow-heif

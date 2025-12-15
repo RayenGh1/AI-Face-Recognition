@@ -1,0 +1,12 @@
+{
+  "embedding_model": "ArcFace RESNET",
+  "input_size": 112,
+  "models": [
+    "centroid",
+    "nearest_neighbor",
+    "knn",
+    "svm",
+    "logistic_regression"
+  ],
+  "random_state": 42
+}

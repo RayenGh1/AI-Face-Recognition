@@ -1,0 +1,14 @@
+# Ignore all contents but keep the folders
+clusters/*
+cropped_faces/*
+testset/*
+trainset/*
+
+# Keep folder structure
+!clusters/.gitkeep
+!cropped_faces/.gitkeep
+!testset/.gitkeep
+!trainset/.gitkeep
+
+# Ignore Word documents
+*.docx
