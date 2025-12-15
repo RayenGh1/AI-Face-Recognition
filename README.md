@@ -130,7 +130,7 @@ All models are saved to the `./models` directory.
 pip install -r requirements.txt
 ```
 
-## 📦 Install dependencies
+## ▶️ Execution Order
 
 - python 1B_DetectFaces.py
 - python 2B_CreateEmbeddings.py
