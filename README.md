@@ -129,6 +129,7 @@ All models are saved to the `./models` directory.
 ```bash
 pip install -r requirements.txt
 ```
+---
 
 ## ▶️ Execution Order
 
