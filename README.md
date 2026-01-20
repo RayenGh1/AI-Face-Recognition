@@ -51,9 +51,9 @@ The project is structured as a **modular pipeline**, where each processing step 
 
 ---
 
-## 🔍 Pipeline Overview
+## Pipeline Overview
 
-### 1️⃣ Face Detection & Alignment
+### Face Detection & Alignment
 **Script:** `1B_DetectFaces.py`
 
 - Face detection using **RetinaFace**
@@ -63,7 +63,7 @@ The project is structured as a **modular pipeline**, where each processing step 
 
 ---
 
-### 2️⃣ Face Embedding Extraction
+### Face Embedding Extraction
 **Script:** `2B_CreateEmbeddings.py`
 
 - Uses **ArcFace** for feature extraction
@@ -72,7 +72,7 @@ The project is structured as a **modular pipeline**, where each processing step 
 
 ---
 
-### 3️⃣ Selecting the Number of Clusters (K)
+### Selecting the Number of Clusters (K)
 **Script:** `3B_Global_K.py`
 
 - Elbow method (distortion & inertia)
@@ -81,7 +81,7 @@ The project is structured as a **modular pipeline**, where each processing step 
 
 ---
 
-### 4️⃣ Face Clustering
+### Face Clustering
 **Script:** `4B_Clustering.py`
 
 - KMeans clustering on face embeddings
@@ -90,7 +90,7 @@ The project is structured as a **modular pipeline**, where each processing step 
 
 ---
 
-### 5️⃣ Silhouette Analysis
+### Silhouette Analysis
 **Script:** `5B_SilhouetteScore.py`
 
 - Computes silhouette scores per sample and per cluster
@@ -99,7 +99,7 @@ The project is structured as a **modular pipeline**, where each processing step 
 
 ---
 
-### 6️⃣ Supervised Classification
+### Supervised Classification
 **Script:** `6B_TrainClassifier.py`
 
 The following classifiers are trained:
@@ -112,7 +112,7 @@ All models are saved to the `./models` directory.
 
 ---
 
-### 7️⃣ Submission Generation
+### Submission Generation
 **Script:** `7B_GenerateSubmission.py`
 
 - Detects faces in test images
@@ -123,7 +123,7 @@ All models are saved to the `./models` directory.
 
 ---
 
-## 📦 Install dependencies
+## Install dependencies
 
 ### 1. Clone the repository
 ```bash
@@ -131,7 +131,7 @@ pip install -r requirements.txt
 ```
 ---
 
-## ▶️ Execution Order
+## Execution Order
 
 - python 1B_DetectFaces.py
 - python 2B_CreateEmbeddings.py

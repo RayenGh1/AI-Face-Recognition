@@ -70,7 +70,7 @@ plt.show()
 
 
 # ---------------- PCA PROJECTION ----------------
-pca = PCA(n_components=2, random_state=42) # components=2 -> 2D
+pca = PCA(n_components=2, random_state=42, n_init=20) # components=2 -> 2D
 embeddings_2d = pca.fit_transform(embeddings)
 
 

@@ -10,5 +10,11 @@ trainset/*
 !testset/.gitkeep
 !trainset/.gitkeep
 
-# Ignore Word documents
+# Ignore documentation folders
+doc/
+documentation/
+
+# Ignore all Word documents
+*.doc
 *.docx
+

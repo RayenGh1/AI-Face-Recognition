@@ -7,10 +7,10 @@ import matplotlib.pyplot as plt
 
 
 # ---------------- CONFIG ----------------
-CLUSTER_DIR = "./clusters"
 EMBEDDINGS_FILE = "faceEmbeddings.parquet"
 OUTPUT_FILE = "faceEmbeddings_with_labels.parquet"
 PLOTS_DIR = "./silhouette_plots"
+LABELS = "./labels.npy"
 os.makedirs(PLOTS_DIR, exist_ok=True)
 
 label_map = {}
@@ -25,24 +25,8 @@ if "label" in df.columns:
 df["label"] = None
 
 
-# ---------------- ASSIGN CLUSTER LABELS ----------------
-# Each face gets a label based on the folder it was clustered into
-for person in tqdm(os.listdir(CLUSTER_DIR), desc="Clusters"): # Loop over all cluster folders (each cluster folder is 1 person)
-    person_path = os.path.join(CLUSTER_DIR, person) # Path to cluster folder
-    if not os.path.isdir(person_path): # If its not a path -> skip
-        continue
-
-    for img_name in os.listdir(person_path): # Loop over all images in the folder
-        if img_name.lower().endswith((".png", ".jpg", ".jpeg")):
-
-            # For each image:
-                # -> use file name as key
-                # -> use cluster name (person) as value
-            label_map[img_name] = person
-
-
-df["label"] = df["file"].map(label_map) # Take files from file column and look them up in labelmap and take resut
-
+labels = np.load(LABELS)
+df["label"] = labels
 
 # ---------------- SAVE LABELED EMBEDDINGS ----------------
 df.to_parquet(OUTPUT_FILE, index=False)
@@ -91,7 +75,7 @@ for label in unique_labels:
     cluster_names.append(label)
     cluster_means.append(avg_score)
     cluster_sizes.append(len(idx))
-    print(f"{label:12s} -> avg={avg_score:.3f} (n={len(idx)})")
+    print(f"{label:12d} -> avg={avg_score:.3f} (n={len(idx)})")
 
 plt.figure(figsize=(8, 4))
 plt.bar(cluster_names, cluster_means)
@@ -100,7 +84,7 @@ plt.ylabel("Average silhouette score")
 plt.title("Silhouette score per cluster")
 plt.xticks(rotation=45)
 plt.tight_layout()
-plt.savefig(os.path.join(PLOTS_DIR, "silhouette_per_cluster.png"), dpi=200)
+#plt.savefig(os.path.join(PLOTS_DIR, "silhouette_per_cluster.png"), dpi=200)
 plt.show()
 
 
@@ -112,7 +96,7 @@ plt.ylabel("Silhouette score")
 plt.title("Silhouette scores per face")
 plt.grid(True)
 plt.tight_layout()
-plt.savefig(os.path.join(PLOTS_DIR, "silhouette_per_sample.png"), dpi=200)
+#plt.savefig(os.path.join(PLOTS_DIR, "silhouette_per_sample.png"), dpi=200)
 plt.show()
 
 
@@ -123,7 +107,7 @@ plt.ylabel("Number of faces")
 plt.title("Cluster sizes")
 plt.xticks(rotation=45)
 plt.tight_layout()
-plt.savefig(os.path.join(PLOTS_DIR, "cluster_sizes.png"), dpi=200)
+#plt.savefig(os.path.join(PLOTS_DIR, "cluster_sizes.png"), dpi=200)
 plt.show()
 
 print(f"\n[OK] Silhouette analysis + plots saved: {PLOTS_DIR}")
