@@ -18,3 +18,8 @@ documentation/
 *.doc
 *.docx
 
+# Temporary files (Windows / Office)
+*.tmp
+~WRL*.tmp
+~$*
+
