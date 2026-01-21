@@ -75,7 +75,7 @@ print(f"[INFO] Training samples: {len(X)}")
 print(f"[INFO] Classes: {len(label_names)}")
 
 
-# ---------------- CENTROID PER PERSOON ----------------
+# ---------------- CENTROID PER PERSON ----------------
 centers = [] # List to save cluster centers
 
 for class_id in range(len(label_names)):
